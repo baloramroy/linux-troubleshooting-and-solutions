@@ -1,9 +1,6 @@
----
 
 ## **/usr/local** – Locally installed software
-
 For software installed manually **by the administrator**, not through package manager.
-
 Inside:
 • `/usr/local/bin`
 • `/usr/local/sbin`
