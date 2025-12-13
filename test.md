@@ -1,26 +1,4 @@
-### `/boot` – Bootloader files
 
-Contains everything needed to **boot** the system.
-
-- Kernel (`vmlinuz-*`)
-- Initramfs (`initramfs-*`)
-- Bootloader files (GRUB)
-
-#
-
-### `/etc` – Configuration files
-
-**Central location for all system-wide configuration files.**
-
-**Examples:**
-- `/etc/passwd`
-- `/etc/ssh/sshd_config`
-- `/etc/fstab`
-- `/etc/selinux/config`
-
-FHS rule:
-- No **binary** files allowed in `/etc`
-- Only **text** configurations.
 
 #
 
@@ -55,19 +33,7 @@ Cached data for applications
 
 ---
 
-## `/home` – User home directories
 
-User personal files and settings.
-
-**Example:**
-- `/home/alice`
-- `/home/robert`
-
-#
-
-## **/root** – Root user's home directory
-
-Not under `/home` for security reasons.
 
 ---
 
