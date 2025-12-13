@@ -1,5 +1,4 @@
 
-
 #
 
 ## **/var** – Variable data
@@ -30,29 +29,6 @@ Dynamic state information for services
 
 Cached data for applications
 • `/var/cache/dnf/`
-
----
-
-
-
----
-
-## **/opt** – Optional commercial software
-
-Used for **3rd-party** or **vendor** applications.
-
-Example:
-• `/opt/google/chrome`
-• `/opt/microsoft/teams`
-
----
-
-## **/mnt** – Temporary mount location (for manual mounting)
-
-Used by administrators to mount devices manually.
-
-Example:
-• `mount /dev/sdb1 /mnt`
 
 ---
 
@@ -127,52 +103,6 @@ Rules:
 • Can be deleted anytime
 • Often cleaned on reboot
 • Permissions usually `1777` (sticky bit)
-
----
-
-# **3. Relationship Between Key Directories**
-
-Below is a simplified view:
-
-```
-/
-├── bin        → essential user tools
-├── sbin       → essential system tools
-├── boot       → kernel + bootloader
-├── dev        → device files
-├── etc        → configuration
-├── home       → user directories
-├── lib        → essential libraries
-├── media      → removable devices
-├── mnt        → manual mounts
-├── opt        → vendor software
-├── proc       → kernel runtime info
-├── root       → root user home
-├── run        → runtime files
-├── srv        → service data
-├── sys        → kernel device info
-├── tmp        → temporary files
-├── usr        → applications
-└── var        → logs, dbs, caches
-```
-
----
-
-# **4. Historical Notes**
-
-Understanding FHS history helps understand why some directories exist.
-
-• `/bin` and `/usr/bin` were separate due to early UNIX small disks
-• `/sbin` was created for sysadmin-only binaries
-• `/run` replaced `/var/run` in modern distros
-• `/lib` originally housed core system libraries
-
-Many distributions now adopt merged `/usr` (Fedora, RHEL), where:
-• `/bin` → symlink to `/usr/bin`
-• `/sbin` → symlink to `/usr/sbin`
-• `/lib` → symlink to `/usr/lib`
-
-This reduces duplication.
 
 ---
 
