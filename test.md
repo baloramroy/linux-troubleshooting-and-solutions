@@ -1,41 +1,28 @@
+### `/boot` – Bootloader files
 
-## **/usr/local** – Locally installed software
-For software installed manually **by the administrator**, not through package manager.
-Inside:
-• `/usr/local/bin`
-• `/usr/local/sbin`
-• `/usr/local/lib`
+Contains everything needed to **boot** the system.
 
-Useful for custom apps or source-compiled tools.
+- Kernel (`vmlinuz-*`)
+- Initramfs (`initramfs-*`)
+- Bootloader files (GRUB)
 
----
+#
 
-## **/boot** – Bootloader files
-
-Contains everything needed to boot the system.
-
-• Kernel (`vmlinuz-*`)
-• Initramfs (`initramfs-*`)
-• Bootloader files (GRUB)
-
----
-
-## **/etc** – Configuration files
+### `/etc` – Configuration files
 
 **Central location for all system-wide configuration files.**
 
-Examples:
-• `/etc/passwd`
-• `/etc/ssh/sshd_config`
-• `/etc/fstab`
-• `/etc/selinux/config`
+**Examples:**
+- `/etc/passwd`
+- `/etc/ssh/sshd_config`
+- `/etc/fstab`
+- `/etc/selinux/config`
 
 FHS rule:
-**No binary files allowed in /etc**
+- No **binary** files allowed in `/etc`
+- Only **text** configurations.
 
-Only text configurations.
-
----
+#
 
 ## **/var** – Variable data
 
@@ -68,15 +55,15 @@ Cached data for applications
 
 ---
 
-## **/home** – User home directories
+## `/home` – User home directories
 
 User personal files and settings.
 
-Example:
-• `/home/alice`
-• `/home/robert`
+**Example:**
+- `/home/alice`
+- `/home/robert`
 
----
+#
 
 ## **/root** – Root user's home directory
 
