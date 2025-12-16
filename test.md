@@ -1,36 +1,4 @@
 
-#
-
-## **/var** – Variable data
-
-Contains data that **changes frequently**.
-
-Inside:
-
-### **/var/log**
-
-System log files
-• `/var/log/messages`
-• `/var/log/secure`
-• `/var/log/audit/`
-
-### **/var/spool**
-
-Spool files (mail, print jobs)
-
-### **/var/lib**
-
-Dynamic state information for services
-• `/var/lib/mysql/`
-• `/var/lib/docker/`
-• `/var/lib/rpm/`
-
-### **/var/cache**
-
-Cached data for applications
-• `/var/cache/dnf/`
-
----
 
 ## **/media** – Automated mount directory
 
