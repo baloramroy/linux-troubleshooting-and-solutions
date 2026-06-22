@@ -171,6 +171,26 @@ nmcli con up "ens34"
 cat /etc/resolv.conf
 ```
 
+### Additional nmcli command for manage DNS
+
+```bash
+# 1. Check current DNS settings
+nmcli con show "ens34"
+or
+nmcli device show ens34
+
+# 2. Remove the unwanted DNS servers
+nmcli con mod "ens34" -ipv4.dns 2
+nmcli con mod "ens34" -ipv4.dns 4
+
+# 3. Apply the changes
+nmcli con down "ens34" && nmcli con up "ens34"
+
+# 4. Verify the changes
+nmcli con show "ens34" | grep ipv4.dns
+
+```
+
 ### Alternative: Use DHCP DNS
 
 ```bash
