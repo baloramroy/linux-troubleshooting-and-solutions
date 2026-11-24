@@ -2,13 +2,13 @@
 
 ## 1. Objective
 
-To safely replace the existing `mynagad` SSL certificate in the Java Keystore (`cacerts`) with the new certificate (`STAR_mynagad_com.crt`) and deploy the updated application JAR files for Auth and Portal GW.
+To safely replace the existing `mydomain` SSL certificate in the Java Keystore (`cacerts`) with the new certificate (`STAR_mydomain_com.crt`) and deploy the updated application JAR files for Auth and Portal GW.
 
 ## 2. Prerequisites
 
 - Root or appropriate administrative access to the server.
 - Java installed at `/opt/jdk`.
-- New SSL certificate available at `/tmp/devops/STAR_mynagad_com.crt`.
+- New SSL certificate available at `/tmp/devops/STAR_mydomain_com.crt`.
 - Updated Auth and Portal GW JAR files available for deployment.
 - Application deployment permissions.
 
@@ -18,20 +18,20 @@ To safely replace the existing `mynagad` SSL certificate in the Java Keystore (`
 |---|---|
 | Java Keytool | `/opt/jdk/bin/keytool` |
 | Java Keystore | `/opt/jdk/jre/lib/security/cacerts` |
-| Certificate Alias | `mynagad` |
-| New Certificate | `/tmp/devops/STAR_mynagad_com.crt` |
+| Certificate Alias | `mydomain` |
+| New Certificate | `/tmp/devops/STAR_mydomain_com.crt` |
 | Applications | Auth and Portal GW |
 
 ## 3. Procedure
 
 ### Step 1: Check Existing Certificate Alias
 
-First, check whether the `mynagad` alias already exists in the Java Keystore.
+First, check whether the `mydomain` alias already exists in the Java Keystore.
 
 ```bash
 /opt/jdk/bin/keytool -list \
 -keystore /opt/jdk/jre/lib/security/cacerts \
--alias mynagad
+-alias mydomain
 ```
 
 Enter the keystore password when prompted.
@@ -60,11 +60,11 @@ ls -lh /opt/jdk/jre/lib/security/cacerts*
 
 ### Step 3: Delete the Existing Certificate
 
-If the `mynagad` alias exists, delete the existing certificate.
+If the `mydomain` alias exists, delete the existing certificate.
 
 ```bash
 /opt/jdk/bin/keytool -delete \
--alias mynagad \
+-alias mydomain \
 -keystore /opt/jdk/jre/lib/security/cacerts
 ```
 
@@ -75,7 +75,7 @@ Verify that the alias has been deleted:
 ```bash
 /opt/jdk/bin/keytool -list \
 -keystore /opt/jdk/jre/lib/security/cacerts \
--alias mynagad
+-alias mydomain
 ```
 
 Expected result: Alias does not exist.
@@ -86,8 +86,8 @@ Import the new certificate into the Java Keystore using the same alias.
 
 ```bash
 /opt/jdk/bin/keytool -importcert \
--file /tmp/devops/STAR_mynagad_com.crt \
--alias mynagad \
+-file /tmp/devops/STAR_mydomain_com.crt \
+-alias mydomain \
 -keystore /opt/jdk/jre/lib/security/cacerts
 ```
 
@@ -106,12 +106,12 @@ Check the certificate details:
 ```bash
 /opt/jdk/bin/keytool -list -v \
 -keystore /opt/jdk/jre/lib/security/cacerts \
--alias mynagad
+-alias mydomain
 ```
 
 Verify the following:
 
-- Alias name is `mynagad`.
+- Alias name is `mydomain`.
 - Certificate owner/Subject is correct.
 - Issuer is correct.
 - Validity dates are correct.
@@ -173,7 +173,7 @@ Replace the backup filename with the actual backup file.
 
 The activity will be considered successful when:
 
-- The old `mynagad` certificate has been replaced.
+- The old `mydomain` certificate has been replaced.
 - The new certificate is successfully imported and verified.
 - Updated Auth and Portal GW JAR files are deployed.
 - Both application services are running successfully.
